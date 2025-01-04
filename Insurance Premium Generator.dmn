@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ese3jc" name="Insurance Premium Generator" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.29.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="Insurance_Premium_Generator" name="Insurance Premium Generator">
+    <decisionTable id="DecisionTable_1klar05" hitPolicy="FIRST">
+      <input id="Input_1" label="Vehicle Age">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>age</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ir9r1g" label="Vehicle Type">
+        <inputExpression id="LiteralExpression_0fikl29" typeRef="string">
+          <text>vehicleType</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0g12lgv">
+          <text>"Sports Car","SUV","Sedan","Convertible"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1y8t7uc" label="Location">
+        <inputExpression id="LiteralExpression_11ifd5g" typeRef="string">
+          <text>location</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0liagfb">
+          <text>"Urban","Rural","High Crime","Tourist","Sub Urban"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0xsa9sd" label="Accidents">
+        <inputExpression id="LiteralExpression_01dm5og" typeRef="number">
+          <text>accidents</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_07gjoox" label="DUI Convictions">
+        <inputExpression id="LiteralExpression_0czks2e" typeRef="number">
+          <text>duiConvictions</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1a5nxhi" label="No Claim Bonus">
+        <inputExpression id="LiteralExpression_1nkwrfk" typeRef="number">
+          <text>noClaimBonus</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Multiplier" name="multiplier" typeRef="number" />
+      <output id="OutputClause_1dom31r" label="Reason" name="reason" typeRef="string" />
+      <rule id="DecisionRule_1tloues">
+        <inputEntry id="UnaryTests_1g166ud">
+          <text>&lt;=25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0acokvr">
+          <text>"Sports Car"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f8iyxk">
+          <text>"Urban"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ke1isv">
+          <text>&gt;2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mgaic2">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l1t8zs">
+          <text>&lt;=2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1weaj02">
+          <text>2.0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uiyzs3">
+          <text>"High risk for young drivers in cities."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04a6lei">
+        <inputEntry id="UnaryTests_0t1aofw">
+          <text>&lt;=25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15y547a">
+          <text>"Sports Car"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uzls1v">
+          <text>"Urban"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nzayxw">
+          <text>&lt;=2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ladk6a">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jte06o">
+          <text>&gt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0brcnsb">
+          <text>1.8</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n09aba">
+          <text>"Lower multiplier for no-claim bonus."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vrm15d">
+        <inputEntry id="UnaryTests_0g6277f">
+          <text>]25..45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nixh1f">
+          <text>"SUV"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m6h7a8">
+          <text>"Rural"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06pwute">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17ycnlf">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12kpch1">
+          <text>&gt;5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fngmcy">
+          <text>0.9</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k0z4fu">
+          <text>"Safer drivers, rural area discount."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03sbpij">
+        <inputEntry id="UnaryTests_1lua48a">
+          <text>&gt;45</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ky4i6d">
+          <text>"Sedan"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oomay9">
+          <text>"Urban","Sub Urban"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mms3go">
+          <text>&lt;=1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ocmm6a">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wahzl8">
+          <text>&gt;3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08vzz12">
+          <text>1.1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pyevt8">
+          <text>"Mid-aged drivers with good record."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lv50p5">
+        <inputEntry id="UnaryTests_01p6d1r">
+          <text>&lt;=30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14wgshr">
+          <text>"Convertible"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r7vpg1">
+          <text>"Tourist"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uvzcth">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ndkb7w">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xo2oko">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i2f5z4">
+          <text>1.5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1266zzi">
+          <text>"Higher premium in tourist areas."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ibg0nh">
+        <inputEntry id="UnaryTests_18o9d96">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18p1snk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02w0402">
+          <text>"High Crime"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vuj00n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03wrw7x">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v1lsji">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tqti5a">
+          <text>2.5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bz164i">
+          <text>"Extra charge for theft-prone areas."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xwx1qy">
+        <inputEntry id="UnaryTests_1922sxm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w5aazs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lh57nk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14ksu98">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xvilfp">
+          <text>&gt;=1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rj0oe9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l2689t">
+          <text>3.0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dl7jfe">
+          <text>"Severe penalty for multiple DUIs."</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Insurance_Premium_Generator">
+        <dc:Bounds height="80" width="180" x="160" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
